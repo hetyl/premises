@@ -1,0 +1,28 @@
+exp_name: segformer_512_b3_42_with_augs_batch16_fix_cosine_clean
+outdir: ./experiments/
+dataset:
+  root_dir: /home/vlada/datasets/cryme2022/new
+  val_size: 0.15
+  test_dir: /home/vlada/datasets/cryme2022/test
+  with_augs: true
+  input_size: 512
+  batch_size: 16
+  num_workers: 16
+  part: full
+  augmentation: null
+seed: 42
+model:
+  pretrain_name: nvidia/mit-b2
+train:
+  optimizer: AdamW
+  grad_accum_steps: 1
+  learning_rate: 0.0002225390027474888
+  min_learning_rate: 3.0e-06
+  momentum: 0.9
+  weight_decay: 0.04302425360573382
+  lr_schedule:
+    name: cosine
+    step_size: 3
+    gamma: 0.632
+    last_epoch: 6
+  n_epoch: 1000
